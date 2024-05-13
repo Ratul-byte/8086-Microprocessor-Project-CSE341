@@ -2,8 +2,8 @@
 
 Hello everyone! 👋 This is a small project developed during our university's Microprocessor course. Here we constructed four cipher-decipher algorithms using only Assemply language for 8086 microprocessor with the help from YouTube tutorials, ChatGPT, StackOverflow, and various other free online resources.
 
-##### **For this project to work make sure to download (For educational institutions faculties might provide) and install EMU8086 software. 
-##### *([Softonic Download Link](https://emu8086-microprocessor-emulator.en.softonic.com/download) + [Activation Code](https://gist.github.com/joao-neves95/8cb68b4904226efc28f5f1fb2ce65f33#gistcomment-5046549)) 
+#### **For this project to work make sure to download (For educational institutions faculties might provide) and install EMU8086 software. 
+#### *([Softonic Download Link](https://emu8086-microprocessor-emulator.en.softonic.com/download) + [Activation Code](https://gist.github.com/joao-neves95/8cb68b4904226efc28f5f1fb2ce65f33#gistcomment-5046549)) 
 
 ## Group Members:
 - [Md. Ratul Mushfique](https://www.facebook.com/ratul.mushfique/)
@@ -11,22 +11,25 @@ Hello everyone! 👋 This is a small project developed during our university's M
 - [Mohd. Shadman Ahmed Razeen](https://www.facebook.com/profile.php?id=100008473509371)
 
 ## Project Description:
-Ciphering is the process of encoding a message using a cryptographic algorithm to make it unreadable to unauthorized parties, while deciphering is the process of reversing the encryption to retrieve the original message. In this project a user can encrypt(cipher) and decrypt(decipher) a certain input given to the emu8086 terminal. Since, there are 4 different algorithms that are constructed here, the user has the power to choose which algorithm he/she will be using. Moreover, the user also has the choice to use if the algorithms will find the ciphered or deciphered text of the input given in the terminal. Now, here is a brief explanation about the four algorithms that we implemented/updated/created,
+Ciphering is the process of encoding a message using a cryptographic algorithm to make it unreadable to unauthorized parties, while deciphering is the process of reversing the encryption to retrieve the original message. In this project a user can encrypt(cipher) and decrypt(decipher) a certain input given to the emu8086 terminal. Since there are 4 different algorithms that are constructed here, the user has the power to choose which algorithm he/she will be using. Moreover, the user also has the choice to use if the algorithms will find the ciphered or deciphered text of the input given in the terminal. Now, here is a brief explanation of the four algorithms that we implemented/updated/created,
 
 ### 1. Updated Vigenere Cipher:
-In this varian of Vignere Cipher Algorithm, the user provides an encrypted message and two secret letters. Each letter of the encrypted message and the secret letters are converted to numerical values when arithmatic operations gets conducted on them. Characters in the odd positions' is added to the first secret letter, and the even positions' added to the second secret letter. The result is converted back to characters to get the encrypted message.
+In this variant of the Vignere Cipher Algorithm, the user provides an encrypted message and two secret letters. Each letter of the encrypted message and the secret letters are converted to numerical values when arithmatic operations gets conducted on them. Characters in the odd positions' are added to the first secret letter, and the even positions' are added to the second secret letter. The result is converted back to characters to get the encrypted message.
 
 #### Example:
+```sh
 Secret Letters: AB
 Message: ‘this’
 Even positions: t, i
 Odd positions: h, s
+```
 
 #### Cipher:
-t + A - 115 => 116 + 65 - 115 => B [66]
+t + A - 115 => 116 + 65 - 115 => B$$ [66]
 h + B - 115 => 104 + 66 - 115 => 7 [55]
 i + A - 115 => 105 + 65 - 115 => 7 [55]
 s + B - 115 => 115 + 66 - 115 => B [66]
+
 
 #### Decipher:
 The encrypted text is B77B
