@@ -61,7 +61,7 @@ For encryption, each letter's position in the alphabet is calculated based on it
 
 - For **B** (v2):
   - ASCII value: `66`
-  - Calculation: (66 - 65) = 1 + 1 = 2 *3 = 6  
+  - Calculation: (66 - 65) = 1 + 1 = 2 * 3 = 6  
   - Adjusted value: \( (6 - 1) + 65 = 70   
   - Resulting character: 'F' (s2)
 
