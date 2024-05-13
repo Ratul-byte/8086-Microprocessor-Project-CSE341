@@ -55,20 +55,20 @@ For encryption, each letter's position in the alphabet is calculated based on it
 
 - For **A** (v1):
   - ASCII value: `65`
-  - Calculation: \( (65 - 65) = 0 + 1 = 1 \times 3 = 3 \)
-  - Adjusted value: \( (3 - 1) + 65 = 67 \)
+  - Calculation: (65 - 65) = 0 + 1 = 1 * 3 = 3  
+  - Adjusted value: (3 - 1) + 65 = 67  
   - Resulting character: 'C' (s1)
 
 - For **B** (v2):
   - ASCII value: `66`
-  - Calculation: \( (66 - 65) = 1 + 1 = 2 \times 3 = 6 \)
-  - Adjusted value: \( (6 - 1) + 65 = 70 \)
+  - Calculation: (66 - 65) = 1 + 1 = 2 *3 = 6  
+  - Adjusted value: \( (6 - 1) + 65 = 70   
   - Resulting character: 'F' (s2)
 
 - For **C** (v3):
   - ASCII value: `67`
-  - Calculation: \( (67 - 65) = 3 + 1 = 4 \times 3 = 12 \)
-  - Adjusted value: \( (12 - 1) + 65 = 76 \)
+  - Calculation: (67 - 65) = 3 + 1 = 4 * 3 = 12  
+  - Adjusted value: (12 - 1) + 65 = 76  
   - Resulting character: 'L' (s3)
 
 #### Decipher:
@@ -76,22 +76,22 @@ During decryption, the process is reversed.
 The encrypted text is **CFI**
 
 - For **V1** (s1):
-  - Calculation: \( V1 = \frac{s1}{t} = \frac{3}{3} = 1 - 1 + 65 \)
+  - Calculation: V1 = s1/t = 3/3 = 1 - 1 + 65
   - Result: 'A' (65)
 
 - For **V2** (s2):
-  - Calculation: \( V2 = \frac{s2}{t} = \frac{6}{3} = 2 - 1 + 65 \)
+  - Calculation: V2 = s2/t = 6/3 = 2 - 1 + 65
   - Result: 'B' (66)
 
 - For **V3** (s3):
-  - Calculation: \( V3 = \frac{s3}{t} = \frac{9}{3} = 3 - 1 + 65 \)
+  - Calculation: V3 = s3/t = 9/3 = 3 - 1 + 65
   - Result: 'C' (67)
 
 
 ### 3. Caesar Algorithm:
 This algorithm shifts each letter in the message by three characters. For ciphering, each character is moved forward by three bits, and for deciphering, each character is shifted backward by three bits.  
 
-### Cipher:
+#### Cipher:
 ```sh
 Input: AbC.
 Output: DeF
@@ -99,7 +99,7 @@ Input: XYZ
 Output: [/]
 ```
 
-### Decipher:
+#### Decipher:
 ```sh
 Input: DeF
 Output: AbC
