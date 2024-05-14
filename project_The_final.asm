@@ -1,5 +1,3 @@
-
-
 data segment
     ; add your data here!
     arr db  40 dup (?)
@@ -43,7 +41,6 @@ start:
     ;sub ax, 30h ; e.g = '3' of hex is 33h
     ;mov di, ax ;len of array
     
-beginning:    
     mov ah, 2
     mov dl, 0Dh
     int 21h
@@ -102,7 +99,7 @@ vigenere:
         mov ah, 9
         int 21h
         
-        mov cx, 2
+        mov cx, 2      ;initializing the secret letter array
         mov si, 0
         
         input2:
@@ -118,7 +115,7 @@ vigenere:
             mov dl, 0Ah
             int 21h
                
-            mov cx,40
+            mov cx,40    ; initialising the message array 
             mov si,0
             
             lea dx, var1
@@ -129,9 +126,9 @@ vigenere:
             mov ah,1
             int 21h
             
-            cmp al, '$'
+            cmp al, '$'      ;checking if the last character is $ sign
             jne next_step
-            jmp algo_end 
+            jmp algo_end     ;stopping taking input when $sign is found
             
         next_step:    
             mov bl, al
@@ -139,23 +136,23 @@ vigenere:
             
             mov ax, si
             mov bh, 2
-            div bh
+            div bh            ; dividing the si(position) checking if its even or odd
             
-            mov arr[si], bl 
+            mov arr[si], bl   ; storing the message
             
-            cmp ah, 0
+            cmp ah, 0         
             je even
             jmp odd
             
-        even:
+        even:             ; the even position letters gets processed
             mov dx, si
-            mov si, 0
+            mov si, 0       ; for not taking 0 as a char.
             mov bh, arr2[si]
             add bl, bh
             mov si, dx
             jmp next_phase
             
-        odd:
+        odd:              ; the odd position letters gets processed
             mov dx, si
             mov si, 1
             mov bh, arr2[si]
@@ -165,9 +162,9 @@ vigenere:
              
         next_phase:
             sub bl, 115    
-            mov arr3[si], bl
+            mov arr3[si], bl  ;the value gets stored in array
             add si, 1 
-            mov di,si
+            mov di,si      ;storing the number of input characters
             loop input1
             
         algo_end:    
@@ -202,7 +199,7 @@ vigenere:
         mov ah, 9
         int 21h       
                 
-        mov cx, di  ;initializing for deciphering
+        mov cx, di  ;initializing for deciphering (the number of input characters)
         mov si, 0        
                 
         mov ah, 1
@@ -211,9 +208,7 @@ vigenere:
         je decipher_text
         jmp exit2
         
-        
-        mov cx, di     ;previously it was here
-        mov si, 0   
+           
         
         
        
@@ -225,7 +220,7 @@ vigenere:
             div bh   
             
             cmp ah, 0
-            je even2
+            je even2        ;checking if the position is even or odd
             jmp odd2
                       
         even2:
@@ -274,7 +269,7 @@ vigenere:
         jmp exit2
         
         
-    vignere_decipher:      ;only decipher the text
+    vignere_decipher:  ;only decipher the text when the user
         mov ah, 2
         mov dl, 0Dh
         int 21h
@@ -285,11 +280,11 @@ vigenere:
         mov ah, 9
         int 21h
         
-        mov cx, 2
+        mov cx, 2         ;initializing the secret letter array
         mov si, 0
         
         decipher_input2:
-            mov ah, 1  ;input for taking 2 secret keys
+            mov ah, 1    ;input for taking 2 secret keys
             int 21h
             mov arr2[si], al  ;array for two secret keys
             inc si
@@ -301,14 +296,14 @@ vigenere:
             mov dl, 0Ah
             int 21h
                
-            mov cx,40
+            mov cx,40        ;initializing the array iteration
             mov si,0
             
             lea dx, var1
             mov ah, 9
             int 21h
             
-        decipher_input1: 
+        decipher_input1:   ; taking the cipher text as input
             mov ah,1
             int 21h
             
@@ -334,7 +329,7 @@ vigenere:
         
             mov dx, si
             mov si, 0
-            mov bh, arr2[si]
+            mov bh, arr2[si]   ;accessing the 1st secret character
             sub bl, bh
             mov si, dx
             jmp vig_next_phase3
@@ -342,7 +337,7 @@ vigenere:
         odd3:
             mov dx, si
             mov si, 1
-            mov bh, arr2[si]
+            mov bh, arr2[si]   ;accessing the 2nd secret character
             sub bl, bh
             mov si, dx
             jmp vig_next_phase3 
@@ -366,10 +361,10 @@ vigenere:
         int 21h 
          
                      
-        mov cx, 40
+        mov cx, 40          ;initializing the array iteration
         mov si, 0
         
-        view3:
+        view3:                 ;viewing the deciphered text
             mov dl, arr3[si]
             mov ah, 2
             int 21h
@@ -377,6 +372,7 @@ vigenere:
             loop view3  
        
        jmp exit2
+       
 
 stacks:
     mov ah, 2
@@ -734,45 +730,45 @@ view:
                 jmp formula_part2
                 
 caesar:
-    mov ah, 2                  ; Set AH to 2 to indicate print character function
-    mov dl, 0Dh                ; Set DL to 0Dh (carriage return)
-    int 21h                    ; Call interrupt 21h to print the character in DL
-    mov dl, 0Ah                ; Set DL to 0Ah (line feed)
+    mov ah, 2                  
+    mov dl, 0Dh                
+    int 21h                    
+    mov dl, 0Ah                
     int 21h
 
     ; Get user's choice (Cipher or Decipher)
     lea dx, decide             ; Load the address of the 'decide' string into DX
-    mov ah, 9                  ; Set AH to 9 to indicate print string function
-    int 21h                    ; Call interrupt 21h to print the string at the address in DX
+    mov ah, 9                  
+    int 21h                    
 
-    mov ah, 1                  ; Set AH to 1 to indicate read character function
-    int 21h                    ; Call interrupt 21h to read a single character from input
+    mov ah, 1                  
+    int 21h                    
     mov pick, al               ; Store the user's choice in the 'pick' variable
 
     ; load array
     mov cx, 40                  ; Set CX to 5 (number of characters to read)
     mov si, 0                  ; Set SI to 0 (index for the array)
               
-    mov ah, 2                  ; Set AH to 2 to indicate print character function
-    mov dl, 0Dh                ; Set DL to 0Dh (carriage return)
-    int 21h                    ; Call interrupt 21h to print the character in DL
-    mov dl, 0Ah                ; Set DL to 0Ah (line feed)
+    mov ah, 2                 
+    mov dl, 0Dh              
+    int 21h                    
+    mov dl, 0Ah                
     int 21h      
               
     lea dx, var1               ; Load the address of the 'var1' string into DX
-    mov ah, 9                  ; Set AH to 9 to indicate print string function
-    int 21h                    ; Call interrupt 21h to print the string at the address in DX
+    mov ah, 9                  
+    int 21h                    
 
     L1:
-    mov ah, 1                  ; Set AH to 1 to indicate read character function
-    int 21h                    ; Call interrupt 21h to read a single character from input
+    mov ah, 1                 
+    int 21h                    
            
     cmp al, '$'
     jne next
     jmp output       
     
     next:
-    mov bl, al                 ; Move the input character to BL
+    mov bl, al                 
       
     ; Shift the character based on user's choice
     cmp pick, 'C'              ; Compare the user's choice with 'C' (Cipher)
@@ -796,11 +792,11 @@ caesar:
 
     ; Output a newline
     output:
-    mov ah, 2                  ; Set AH to 2 to indicate print character function
-    mov dl, 0Dh                ; Set DL to 0Dh (carriage return)
-    int 21h                    ; Call interrupt 21h to print the character in DL
-    mov dl, 0Ah                ; Set DL to 0Ah (line feed)
-    int 21h                    ; Call interrupt 21h to print the character in DL
+    mov ah, 2                  
+    mov dl, 0Dh                
+    int 21h                    
+    mov dl, 0Ah                
+    int 21h                   
 
     ; Output the modified string
     
@@ -808,15 +804,14 @@ caesar:
     mov si, 0                  ; Set SI to 0 (index for the array)
 
     L2:
-    mov dl, arr[si]            ; Move the character from the array to DL
-    mov ah, 2                  ; Set AH to 2 to indicate print character function
-    int 21h                    ; Call interrupt 21h to print the character in DL
+    mov dl, arr[si]            
+    mov ah, 2                  
+    int 21h                    
     inc si                     ; Increment SI to move to the next position in the array
     loop L2                    ; Repeat the loop until CX becomes zero    
          
     
 exit2:
-    jmp beginning
     
     
     mov ax, 4c00h ; exit to operating system.
