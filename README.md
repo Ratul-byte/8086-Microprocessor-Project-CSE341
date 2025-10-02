@@ -2,8 +2,8 @@
 
 Hello everyone! 👋 This is a small project developed during our university's Microprocessor course. Here we constructed four cipher-decipher algorithms using only [Assembly Language](...) for 8086 microprocessor with the help from YouTube tutorials StackOverflow, and various other free online resources.
 
-##### **For this project to work make sure to download (For educational institutions faculties might provide) and install EMU8086 software. 
-##### ( [Softonic Download Link](https://emu8086-microprocessor-emulator.en.softonic.com/download) + [Activation Code](https://gist.github.com/joao-neves95/8cb68b4904226efc28f5f1fb2ce65f33#gistcomment-5046549) )
+#### **For this project to work make sure to download (For educational institutions faculties might provide) and install EMU8086 software. 
+#### ( [Softonic Download Link](https://emu8086-microprocessor-emulator.en.softonic.com/download) + [Activation Code](https://gist.github.com/joao-neves95/8cb68b4904226efc28f5f1fb2ce65f33#gistcomment-5046549) )
 
 **Update:** A Python version of this project is now available in `Algo.py`. You can run this version on any modern computer without the need for an emulator. To run it, use the command `python Algo.py` in your terminal. 
 
